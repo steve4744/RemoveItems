@@ -1,0 +1,5 @@
+name: RemoveItems
+main: io.github.steve4744.removeitems.RemoveItems
+author: steve4744
+version: 0.1
+description: Removes player's inventory on join.
