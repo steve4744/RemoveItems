@@ -21,6 +21,8 @@ public class RemoveItems extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
-		player.getInventory().clear();
+		if (!player.hasPermission("removeitem.bypass")) {
+			player.getInventory().clear();
+		}
 	}
 }
