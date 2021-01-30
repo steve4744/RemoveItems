@@ -28,7 +28,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v0.3-SNAPSHOT.${{ github.run.number }} 
+        tag_name: "v0.3-SNAPSHOT"
         release_name: RemoveItems-0.3-SNAPSHOT.${{ github.run.number }}
         body: |
           Changes in this release
