@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+   branches: [ 0.4-SNAPSHOT ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v0.3-SNAPSHOT.${{ github.run_number }}
-        release_name: RemoveItems-0.3-SNAPSHOT.${{ github.run_number }}
+        tag_name: v0.4-SNAPSHOT.${{ github.run_number }}
+        release_name: RemoveItems-0.4-SNAPSHOT.${{ github.run_number }}
         body: |
           Changes in this release
           - First change
@@ -43,6 +43,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: target/RemoveItems-0.3-SNAPSHOT.jar
-        asset_name: RemoveItems-0.3-SNAPSHOT.jar
+        asset_path: target/RemoveItems-0.4-SNAPSHOT.jar
+        asset_name: RemoveItems-0.4-SNAPSHOT.jar
         asset_content_type: application/java-archive
