@@ -8,7 +8,7 @@ env:
 
 on:
   push:
-    branches: [ 0.4-SNAPSHOT ]
+    branches: [ ${{ env.VERSION }} ]
 #  pull_request:
 #    branches: [ main ]
 
@@ -34,7 +34,7 @@ jobs:
         #tag_name: v0.4-SNAPSHOT.${{ github.run_number }}
         tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
         #release_name: RemoveItems-0.4-SNAPSHOT.${{ github.run_number }}
-        release_name: RemoveItems-.${{ env.VERSION }}.${{ github.run_number }}
+        release_name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
         body: |
           Changes in this release
           - First change
