@@ -16,7 +16,6 @@ public class RemoveItems extends JavaPlugin implements Listener {
 	}
 
 	public void onDisable() {
-		getLogger().info("Disabling RemoveItems...");
 	}
 
 	@EventHandler
