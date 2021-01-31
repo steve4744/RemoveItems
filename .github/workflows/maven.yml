@@ -7,7 +7,7 @@ env:
   VERSION: 0.4-SNAPSHOT
 on:
   push:
-   branches: [ env.VERSION ]
+    branches: [ env.VERSION ]
 #  pull_request:
 #    branches: [ main ]
 
