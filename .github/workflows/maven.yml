@@ -4,11 +4,11 @@
 name: Java CI with Maven
 
 env:
-  VERSION: 0.4-SNAPSHOT
+  VERSION: 0.5-SNAPSHOT
 
 on:
   push:
-    branches: [ 0.4-SNAPSHOT ]
+    branches: [ 0.5-SNAPSHOT ]
 #  pull_request:
 #    branches: [ main ]
 
@@ -47,6 +47,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} 
         asset_path: target/RemoveItems-${{ env.VERSION }}.jar
-        #asset_name: RemoveItems-0.4-SNAPSHOT.jar
         asset_name: RemoveItems-${{ env.VERSION }}.jar
         asset_content_type: application/java-archive
