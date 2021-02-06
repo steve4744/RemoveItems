@@ -1,0 +1,9 @@
+name: RemoveItems
+main: io.github.steve4744.removeitems.RemoveItems
+author: steve4744
+version: ${project.version}
+description: Removes player's inventory on join.
+permissions:
+  removeitem.bypass:
+    description: allow players to keep items.
+    default: op
