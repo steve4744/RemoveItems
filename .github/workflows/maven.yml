@@ -51,9 +51,9 @@ jobs:
         asset_content_type: application/java-archive
     - name: Upload to Artifactory
       id: upload-to-artifactory
-        uses: advancedcsg-open/action-jfrog-cli@master
-        with:
-          url: 'https://steve4744.jfrog.io/'
-          credentials type: 'apikey'
-          apikey: ${{ secrets.RT_APIKEY }}
-          args: u RemoveItems-${{ env.VERSION }}.jar https://steve4744.jfrog.io/artifactory/steve4744-repo/
+      uses: advancedcsg-open/action-jfrog-cli@master
+      with:
+        url: 'https://steve4744.jfrog.io/'
+        credentials type: 'apikey'
+        apikey: ${{ secrets.RT_APIKEY }}
+        args: u "RemoveItems-${{ env.VERSION }}.jar" "https://steve4744.jfrog.io/artifactory/steve4744-repo/"
