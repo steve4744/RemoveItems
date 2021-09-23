@@ -4,7 +4,7 @@
 name: Java CI with Maven
 
 env:
-  VERSION: 0.6
+  VERSION: 0.6-SNAPSHOT
 
 on:
   push:
@@ -49,3 +49,9 @@ jobs:
         asset_path: target/RemoveItems-${{ env.VERSION }}.jar
         asset_name: RemoveItems-${{ env.VERSION }}.jar
         asset_content_type: application/java-archive
+    - name: Upload to Artifactory
+      id: upload-to-artifactory
+      uses: jfrog/setup-jfrog-cli@v2
+      env:
+        JF_ARTIFACTORY_1: ${{ secrets.artifactory_token_1 }}
+      run: jfrog rt u RemoveItems-${{ env.VERSION }}.jar https://steve4744.jfrog.io/artifactory/steve4744-repo/
