@@ -54,6 +54,7 @@ jobs:
       uses: advancedcsg-open/action-jfrog-cli@master
       with:
         url: 'https://steve4744.jfrog.io/'
+        credentials type: 'username'
         user: ${{ secrets.RT_USER }}
         password: ${{ secrets.RT_PASSWORD }}
         args: u "target/RemoveItems-${{ env.VERSION }}.jar" "https://steve4744.jfrog.io/artifactory/steve4744-repo/io.github.steve4744/RemoveItems/"
