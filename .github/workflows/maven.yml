@@ -53,7 +53,7 @@ jobs:
       id: upload-to-artifactory
       uses: advancedcsg-open/action-jfrog-cli@master
       with:
-        url: 'https://steve4744.jfrog.io/'
+        url: 'https://steve4744.jfrog.io/artifactory/'
         credentials type: 'username'
         user: ${{ secrets.RT_USER }}
         password: ${{ secrets.RT_PASSWORD }}
