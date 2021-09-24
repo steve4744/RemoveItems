@@ -57,4 +57,4 @@ jobs:
         credentials type: 'username'
         user: ${{ secrets.RT_USER }}
         password: ${{ secrets.RT_PASSWORD }}
-        args: u "target/RemoveItems-${{ env.VERSION }}.jar" "artifactory/steve4744-repo/io.github.steve4744/RemoveItems/0.6-SNAPSHOT/"
+        args: u "target/RemoveItems-${{ env.VERSION }}.jar" "steve4744-repo/io.github.steve4744/RemoveItems/0.6-SNAPSHOT/"
