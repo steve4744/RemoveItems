@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         distribution: zulu
-        java-version: 1.8
+        java-version: 8.0.345+1
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Create Release
