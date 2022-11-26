@@ -35,7 +35,7 @@ jobs:
       #run: |
           #gh release create v${{ env.VERSION }}.${{ github.run_number }} -t RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
       run: |
-          gh release create v${{ env.TAG_NAME }} -t RemoveItems-${{ TAG_NAME }}
+          gh release create v${{ env.TAG_NAME }} -t RemoveItems-${{ env.TAG_NAME }}
       #with:
         #tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
        # name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
