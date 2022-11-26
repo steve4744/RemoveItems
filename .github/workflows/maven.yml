@@ -32,7 +32,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-          gh release create v${{ env.VERSION  }}.${{ github.run_number }}
+          gh release create v${{ env.VERSION  }}.${{ github.run_number }} -t RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
       #with:
         #tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
        # name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
