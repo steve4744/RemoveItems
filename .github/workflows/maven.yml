@@ -50,8 +50,10 @@ jobs:
       #uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG_NAME: ${{ env.VERSION }}.${{ github.run_number }}
+        ASSET_NAME: RemoveItems-${{ env.VERSION }}.jar
       run: |
-        gh release upload v${{ env.VERSION }}.${{ github.run_number }} "target/RemoveItems-${{ env.VERSION }}.jar#RemoveItems-${{ env.VERSION }}.jar"
+        gh release upload v${{ env.TAG_NAME }} "target/${{ env.ASSET_NAME }}#${{ env.ASSET_NAME }}"
       #with:
         #upload_url: ${{ steps.create_release.outputs.upload_url }} 
         #asset_path: target/RemoveItems-${{ env.VERSION }}.jar
