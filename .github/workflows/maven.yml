@@ -31,8 +31,11 @@ jobs:
       #uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG_NAME: ${{ env.VERSION }}.${{ github.run_number }}
+      #run: |
+          #gh release create v${{ env.VERSION }}.${{ github.run_number }} -t RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
       run: |
-          gh release create v${{ env.VERSION  }}.${{ github.run_number }} -t RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
+          gh release create v${{ env.TAG_NAME }} -t RemoveItems-${{ TAG_NAME }}
       #with:
         #tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
        # name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
@@ -48,7 +51,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release upload v${{ env.VERSION  }}.${{ github.run_number }} "target/RemoveItems-${{ env.VERSION }}.jar#RemoveItems-${{ env.VERSION }}.jar"
+        gh release upload v${{ env.VERSION }}.${{ github.run_number }} "target/RemoveItems-${{ env.VERSION }}.jar#RemoveItems-${{ env.VERSION }}.jar"
       #with:
         #upload_url: ${{ steps.create_release.outputs.upload_url }} 
         #asset_path: target/RemoveItems-${{ env.VERSION }}.jar
