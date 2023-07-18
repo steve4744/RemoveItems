@@ -18,37 +18,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v3
       with:
-        java-version: 1.8
+        distribution: zulu
+        java-version: 8.0.345+1
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      #uses: softprops/action-gh-release@v1
+      #uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
-        release_name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
-        body: |
-          Changes in this release
-          - First change
-          - Second change
-        draft: false
-        prerelease: false
+        TAG_NAME: ${{ env.VERSION }}.${{ github.run_number }}
+      #run: |
+          #gh release create v${{ env.VERSION }}.${{ github.run_number }} -t RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
+      run: |
+          gh release create v${{ env.TAG_NAME }} -t RemoveItems-${{ env.TAG_NAME }}
+      #with:
+        #tag_name: v${{ env.VERSION  }}.${{ github.run_number }}
+       # name: RemoveItems-${{ env.VERSION }}.${{ github.run_number }}
+        #body: |
+         # Changes in this release
+         # - First change
+         # - Second change
+       # draft: false
+       # prerelease: false
+ 
     - name: Upload Release Asset
       id: upload-release-asset
-      uses: actions/upload-release-asset@v1
+      #uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: target/RemoveItems-${{ env.VERSION }}.jar
-        asset_name: RemoveItems-${{ env.VERSION }}.jar
-        asset_content_type: application/java-archive
+        TAG_NAME: ${{ env.VERSION }}.${{ github.run_number }}
+        ASSET_NAME: RemoveItems-${{ env.VERSION }}.jar
+      run: |
+        gh release upload v${{ env.TAG_NAME }} "target/${{ env.ASSET_NAME }}#${{ env.ASSET_NAME }}"
+      #with:
+        #upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        #asset_path: target/RemoveItems-${{ env.VERSION }}.jar
+        #asset_name: RemoveItems-${{ env.VERSION }}.jar
+        #asset_content_type: application/java-archive
+
     - name: Upload to Artifactory
       id: upload-to-artifactory
       uses: advancedcsg-open/action-jfrog-cli@master
